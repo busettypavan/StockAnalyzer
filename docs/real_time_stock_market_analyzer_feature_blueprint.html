@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real-Time Stock Market Analyzer | MVP Feature Blueprint</title>
+<style>
+  :root { --navy:#10233f; --blue:#2457a7; --pale:#eef4fb; --ink:#1d2939; --muted:#667085; --line:#dce3ec; --green:#16805d; --amber:#9a6700; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:Inter,Segoe UI,Arial,sans-serif; color:var(--ink); background:#f5f7fb; line-height:1.5; }
+  .hero { background:linear-gradient(120deg,#10233f,#2457a7); color:white; padding:44px 24px 38px; }
+  .wrap { max-width:1100px; margin:auto; }
+  .eyebrow { text-transform:uppercase; letter-spacing:.13em; font-size:12px; font-weight:700; opacity:.8; }
+  h1 { margin:10px 0 8px; font-size:clamp(30px,4vw,44px); line-height:1.12; }
+  .subtitle { max-width:760px; color:#e2eaf7; font-size:17px; margin:0; }
+  .hero-meta { display:flex; gap:10px; flex-wrap:wrap; margin-top:22px; }
+  .pill { border:1px solid #ffffff55; border-radius:999px; padding:6px 11px; font-size:12px; }
+  main { max-width:1100px; margin:28px auto 54px; padding:0 20px; }
+  .section-head { display:flex; align-items:end; justify-content:space-between; gap:16px; margin:34px 0 14px; }
+  h2 { font-size:22px; margin:0; color:var(--navy); }
+  .section-head p { color:var(--muted); margin:3px 0 0; font-size:14px; }
+  .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+  .card { background:white; border:1px solid var(--line); border-radius:15px; padding:19px; box-shadow:0 4px 14px #10233f08; }
+  .card .icon { width:38px; height:38px; display:grid; place-items:center; border-radius:11px; background:var(--pale); font-size:20px; margin-bottom:12px; }
+  h3 { margin:0 0 8px; color:var(--navy); font-size:16px; }
+  ul { padding-left:19px; margin:8px 0 0; }
+  li { margin:5px 0; font-size:14px; }
+  .tag { display:inline-block; border-radius:6px; padding:3px 7px; font-size:11px; font-weight:700; background:#e7f6ef; color:var(--green); margin-bottom:9px; }
+  .tag.amber { background:#fff3d6; color:var(--amber); }
+  .wide { grid-column:span 2; }
+  .feature-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 18px; }
+  .feature { display:flex; gap:10px; align-items:flex-start; font-size:14px; }
+  .check { color:var(--green); font-weight:800; }
+  .scope-table { width:100%; border-collapse:collapse; background:white; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .scope-table th,.scope-table td { padding:12px 14px; text-align:left; border-bottom:1px solid var(--line); font-size:14px; vertical-align:top; }
+  .scope-table th { background:var(--pale); color:var(--navy); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
+  .scope-table tr:last-child td { border-bottom:0; }
+  .footnote { color:var(--muted); font-size:12px; margin-top:16px; }
+  footer { background:#eaf0f8; padding:22px 20px; color:#536176; font-size:12px; text-align:center; }
+  @media(max-width:760px) { .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .wide { grid-column:span 2; } .section-head { display:block; } }
+  @media(max-width:520px) { .grid,.feature-list { grid-template-columns:1fr; } .wide { grid-column:span 1; } .hero { padding:32px 20px; } main { padding:0 14px; } .scope-table th,.scope-table td { padding:10px 8px; font-size:12px; } }
+  @media print { body { background:white; } .hero { print-color-adjust:exact; -webkit-print-color-adjust:exact; } .card { box-shadow:none; break-inside:avoid; } main { margin-top:12px; } }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Stakeholder feature blueprint · MVP</div>
+    <h1>Real-Time Stock Market Analyzer</h1>
+    <p class="subtitle">A focused NSE stock analysis dashboard for browsing daily market data, exploring technical indicators, tracking manually entered positions, and viewing Moving Average Crossover signals.</p>
+    <div class="hero-meta">
+      <span class="pill">Product Lead: Pavan</span>
+      <span class="pill">Market: NSE-listed stocks</span>
+      <span class="pill">MVP universe: curated Nifty 100-style list</span>
+      <span class="pill">Data: daily historical / end-of-day</span>
+    </div>
+  </div>
+</header>
+<main>
+  <section>
+    <div class="section-head"><div><h2>Core MVP Features</h2><p>The features included in the first release.</p></div></div>
+    <div class="grid">
+      <article class="card"><div class="icon">🔐</div><span class="tag">Account</span><h3>User Authentication</h3><ul><li>Sign in to a persistent user account</li><li>Keep each user's saved positions across visits</li><li>Show each user their own portfolio records</li></ul></article>
+      <article class="card"><div class="icon">🔎</div><span class="tag">Discover</span><h3>NSE Stock Browser</h3><ul><li>Browse a curated Nifty 100-style stock universe</li><li>View stock name, symbol, latest available price, and daily change</li><li>Open a selected stock's detail view</li></ul></article>
+      <article class="card"><div class="icon">📈</div><span class="tag">Analyze</span><h3>Daily Price Chart</h3><ul><li>View historical daily price movement</li><li>Display Open, High, Low, Close, and Volume (OHLCV) history</li><li>Load data when a stock is first viewed and refresh at most once per day</li></ul></article>
+      <article class="card"><div class="icon">🧭</div><span class="tag">Analyze</span><h3>Technical Indicators</h3><p style="font-size:14px;margin:0">Toggle indicators on or off for visual chart analysis.</p><ul><li>Simple Moving Average (SMA)</li><li>Exponential Moving Average (EMA)</li><li>Relative Strength Index (RSI)</li><li>Bollinger Bands (BB)</li><li>MACD</li><li>Stochastic Oscillator</li><li>Average True Range (ATR)</li><li>Volume Weighted Average Price (VWAP)</li><li>On-Balance Volume (OBV)</li><li>Parabolic SAR</li></ul></article>
+      <article class="card"><div class="icon">💼</div><span class="tag">Portfolio</span><h3>Manual Position Management</h3><ul><li>Add a position using stock, quantity, buy price, and buy date</li><li>Save each purchase as a separate lot</li><li>View and maintain saved position entries</li></ul></article>
+      <article class="card"><div class="icon">💹</div><span class="tag">Portfolio</span><h3>Per-Position Profit &amp; Loss</h3><ul><li>Compare buy price with the latest available stock price</li><li>Display profit or loss as an amount and percentage</li><li>Show P&amp;L separately for each lot of a holding</li></ul></article>
+      <article class="card"><div class="icon">⚙️</div><span class="tag">Strategy</span><h3>Moving Average Crossover</h3><ul><li>Apply the MVP's single supported strategy to a stock</li><li>Choose the moving-average period, such as 50 days</li><li>Generate a buy signal when price crosses above the moving average</li><li>Generate a sell signal when price crosses below the moving average</li></ul></article>
+      <article class="card"><div class="icon">🎯</div><span class="tag">Strategy</span><h3>Signal Visualization</h3><ul><li>Mark buy and sell signals on the chart at their historical dates</li><li>Show signal type, date, and signal price in a signal table</li><li>Calculate signals from available historical price data when requested</li></ul></article>
+      <article class="card"><div class="icon">🔄</div><span class="tag">Data</span><h3>On-Demand Data &amp; Calculations</h3><ul><li>Fetch historical data when a stock is viewed</li><li>Refresh stock history at most once per day when revisited</li><li>Calculate selected indicators and strategy signals on demand</li></ul></article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><div><h2>Feature Scope at a Glance</h2><p>Clear boundary between the first release and later enhancements.</p></div></div>
+    <table class="scope-table">
+      <thead><tr><th>Capability</th><th>MVP</th><th>Later extension</th></tr></thead>
+      <tbody>
+        <tr><td>Stock coverage</td><td>Curated Nifty 100-style subset</td><td>Full NSE universe</td></tr>
+        <tr><td>Market data</td><td>Yahoo Finance daily historical data via yfinance</td><td>Streaming / genuinely real-time market feed</td></tr>
+        <tr><td>Technical analysis</td><td>10 proposed indicators; visual analysis only</td><td>Additional indicators or advanced analysis</td></tr>
+        <tr><td>Trading strategy</td><td>Moving Average Crossover only</td><td>Multiple strategies, comparison, averaging and partial-sell signals</td></tr>
+        <tr><td>Positions</td><td>Manual entry; each purchase is a separate lot; per-lot P&amp;L</td><td>Broker/CSV import and combined P&amp;L across lots</td></tr>
+        <tr><td>Investment planning</td><td>Not included</td><td>Goals, target corpus, withdrawals and progress tracking</td></tr>
+        <tr><td>AI capabilities</td><td>Not included</td><td>News/sentiment summaries, signal explanations, goal-gap checks and strategy recommendations</td></tr>
+        <tr><td>Signal calculation</td><td>Computed on demand; chart markers and signal table</td><td>Persisted/cached signal results</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <div class="section-head"><div><h2>Key Product Behaviors</h2><p>Important feature rules visible to stakeholders.</p></div></div>
+    <div class="card">
+      <div class="feature-list">
+        <div class="feature"><span class="check">✓</span><span>Technical indicators support visual analysis; they do not independently create buy/sell signals in the MVP.</span></div>
+        <div class="feature"><span class="check">✓</span><span>Position records are saved to the signed-in user's account.</span></div>
+        <div class="feature"><span class="check">✓</span><span>Every purchase entry remains a separate lot rather than being automatically averaged.</span></div>
+        <div class="feature"><span class="check">✓</span><span>P&amp;L is shown per lot using the latest available price in the app's data.</span></div>
+        <div class="feature"><span class="check">✓</span><span>Price history and strategy signals are retrieved or calculated on demand.</span></div>
+        <div class="feature"><span class="check">✓</span><span>The MVP uses daily/end-of-day data, not a streaming live feed.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><div><h2>Items for Stakeholder Confirmation</h2><p>Decisions to finalize before feature scope is locked.</p></div></div>
+    <div class="grid">
+      <article class="card"><span class="tag amber">Confirm</span><h3>Authentication</h3><p style="font-size:14px;margin:0">Confirm that sign-in is mandatory for the MVP.</p></article>
+      <article class="card"><span class="tag amber">Confirm</span><h3>Indicator List</h3><p style="font-size:14px;margin:0">Confirm the proposed 10 indicators or identify replacements.</p></article>
+      <article class="card"><span class="tag amber">Confirm</span><h3>Signal Presentation</h3><p style="font-size:14px;margin:0">Confirm chart markers plus a signal table as the preferred display.</p></article>
+      <article class="card"><span class="tag amber">Confirm</span><h3>Product Naming</h3><p style="font-size:14px;margin:0">Confirm whether “Real-Time” remains in the name despite daily/end-of-day MVP data.</p></article>
+      <article class="card"><span class="tag amber">Confirm</span><h3>Stock Universe</h3><p style="font-size:14px;margin:0">Confirm the exact curated list, currently proposed as Nifty 100-style coverage.</p></article>
+    </div>
+  </section>
+  <p class="footnote">Stakeholder summary only. This blueprint describes product features and scope, not implementation architecture, delivery estimates, or investment advice. Historical data availability and freshness depend on the selected data provider.</p>
+</main>
+<footer>Real-Time Stock Market Analyzer · MVP Feature Blueprint · Prepared for stakeholder review</footer>
+</body>
+</html>
